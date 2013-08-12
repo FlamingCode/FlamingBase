@@ -2,21 +2,49 @@
 
 /*
  * Copyright (c) 2013, Flaming Code
- * All rights reserved.
+ * 
  */
 
 namespace FlamingBase\Form\View\Helper;
 
 use CoreBootstrap\Form\View\Helper\FormRow as BootstrapFormRow;
 
+use Zend\Form\ElementInterface;
+
 /**
  * FormRow
  *
  * @author Flemming Andersen <flemming@flamingcode.com>
  * @copyright (c) 2013, Flaming Code
+ * @link http://github.com/flamingcode/flamingbase for the canonical source repository
+ * @license http://opensource.org/licenses/GPL-2.0 GPLv2
  */
 class FormRow extends BootstrapFormRow
 {
+	/**
+	 * This annoying hack is necessary in order to support translation of form element labels
+	 *  - The ignorant person who made the CoreBootstrap module didn't think about this
+	 * 
+	 * @param ElementInterface $element
+	 * @return string
+	 */
+	public function render(ElementInterface $element)
+	{
+		$label = $element->getLabel();
+
+		if (isset($label) && '' !== $label) {
+			// Translate the label
+			if (null !== ($translator = $this->getTranslator())) {
+				$label = $translator->translate(
+					$label, $this->getTranslatorTextDomain()
+				);
+				$element->setLabel($label);
+			}
+		}
+		
+		return parent::render($element);
+	}
+	
 	public function renderBootstrapOptions($elementString, $options)
 	{
 		$escapeHtmlHelper = $this->getEscapeHtmlHelper();

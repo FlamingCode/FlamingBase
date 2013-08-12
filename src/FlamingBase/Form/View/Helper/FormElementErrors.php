@@ -2,7 +2,7 @@
 
 /*
  * Copyright (c) 2013, Flaming Code
- * All rights reserved.
+ * 
  */
 
 namespace FlamingBase\Form\View\Helper;
@@ -15,6 +15,8 @@ use Zend\Form\ElementInterface;
  *
  * @author Flemming Andersen <flemming@flamingcode.com>
  * @copyright (c) 2013, Flaming Code
+ * @link http://github.com/flamingcode/flamingbase for the canonical source repository
+ * @license http://opensource.org/licenses/GPL-2.0 GPLv2
  */
 class FormElementErrors extends ZendFormElementErrors
 {

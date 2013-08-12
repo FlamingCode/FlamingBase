@@ -1,0 +1,20 @@
+<?php
+
+return array(
+	'flamingbase' => array(
+		'env_info' => array(
+			// When no explicit config exists we search the ENV array with theese keys
+			'search_keys' => array(
+				'APPLICATION_ENV',
+				'ENV',
+			),
+
+			// Use this to explicitly set the environment
+			//'env' => 'production',
+		),
+
+		'emailer' => array(
+			'default_from' => 'noreply@domain.invalid'
+		),
+	)
+);

@@ -2,7 +2,7 @@
 
 /*
  * Copyright (c) 2013, Flaming Code
- * All rights reserved.
+ * 
  */
 
 namespace FlamingBase;
@@ -15,6 +15,8 @@ use Zend\Mvc\MvcEvent;
  *
  * @author Flemming Andersen <flemming@flamingcode.com>
  * @copyright (c) 2013, Flaming Code
+ * @link http://github.com/flamingcode/flamingbase for the canonical source repository
+ * @license http://opensource.org/licenses/GPL-2.0 GPLv2
  */
 class Module
 {
@@ -38,7 +40,7 @@ class Module
 				'env' => function($helpers) {
 					$serviceLocator = $helpers->getServiceLocator();
 					$config = $serviceLocator->get('Configuration');
-					$envConfig = $config['env_info'];
+					$envConfig = $config['flamingbase']['env_info'];
 
 					$controllerPlugin = new Controller\Plugin\EnvInfo;
 					if (array_key_exists('env', $envConfig))
@@ -53,7 +55,7 @@ class Module
 					$config = $serviceLocator->get('Configuration');
 
 					$controllerPlugin = new Controller\Plugin\Emailer();
-					$controllerPlugin->setDefaultFrom($config['emailer']['default_from']);
+					$controllerPlugin->setDefaultFrom($config['flamingbase']['emailer']['default_from']);
 					return $controllerPlugin;
 				},
 			)

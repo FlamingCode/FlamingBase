@@ -2,7 +2,7 @@
 
 /*
  * Copyright (c) 2013, Flaming Code
- * All rights reserved.
+ * 
  */
 
 namespace FlamingBase\View\Helper;
@@ -14,6 +14,8 @@ use Zend\View\Helper\AbstractHelper;
  *
  * @author Flemming Andersen <flemming@flamingcode.com>
  * @copyright (c) 2013, Flaming Code
+ * @link http://github.com/flamingcode/flamingbase for the canonical source repository
+ * @license http://opensource.org/licenses/GPL-2.0 GPLv2
  */
 class Ellipsis extends AbstractHelper
 {
@@ -37,12 +39,10 @@ class Ellipsis extends AbstractHelper
 			}
 		}
 
-		if(!$pos) {
-			// substr $len-3, because the ellipsis adds 3 chars
+		if(!$pos)
 			return mb_substr($str, 0, $max - mb_strlen($rep, 'utf-8'), 'utf-8') . $rep;
-		}
 
-		// $pos+1 to grab punctuation mark
+		// $pos + 1 to grab punctuation mark
 		return mb_substr($str, 0, $pos + 1, 'utf-8');
 	}
 }
