@@ -35,8 +35,8 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"FlamingBase": "src/",
-			"FlamingBaseTest": "tests/"
+			"FlamingBase\\": "src/",
+			"FlamingBaseTest\\": "tests/"
 		}
 	}
 }
