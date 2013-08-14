@@ -13,6 +13,9 @@ use Zend\Form\ElementInterface;
 
 /**
  * FormRow
+ * 
+ * Makes translation of form element labels possible.
+ * Also makes it possible to use icons for the prepend and append features of Twitter Bootstrap
  *
  * @author Flemming Andersen <flemming@flamingcode.com>
  * @copyright (c) 2013, Flaming Code
@@ -23,7 +26,7 @@ class FormRow extends BootstrapFormRow
 {
 	/**
 	 * This annoying hack is necessary in order to support translation of form element labels
-	 *  - The ignorant person who made the CoreBootstrap module didn't think about this
+	 *  - The person who made the CoreBootstrap module didn't think about this
 	 * 
 	 * @param ElementInterface $element
 	 * @return string
@@ -45,6 +48,12 @@ class FormRow extends BootstrapFormRow
 		return parent::render($element);
 	}
 	
+	/**
+	 * 
+	 * @param string $elementString
+	 * @param array $options
+	 * @return string
+	 */
 	public function renderBootstrapOptions($elementString, $options)
 	{
 		$escapeHtmlHelper = $this->getEscapeHtmlHelper();

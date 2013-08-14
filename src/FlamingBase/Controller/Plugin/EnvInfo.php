@@ -24,24 +24,45 @@ class EnvInfo extends AbstractPlugin
 	const ENV_STAGING = 'staging';
 	const ENV_PRODUCTION = 'production';
 
+	/**
+	 *
+	 * @var string
+	 */
 	protected $env;
 
+	/**
+	 *
+	 * @var array
+	 */
 	protected $searchKeys = array(
 		'APPLICATION_ENV',
 		'ENV',
 	);
 
+	/**
+	 * 
+	 * @return string
+	 */
 	public function __invoke()
 	{
 		return $this->getEnv();
 	}
 
+	/**
+	 * 
+	 * @param string $env
+	 * @return EnvInfo
+	 */
 	public function setEnv($env)
 	{
 		$this->env = (string) $env;
 		return $this;
 	}
 
+	/**
+	 * 
+	 * @return string
+	 */
 	public function getEnv()
 	{
 		if (!$this->env) {
@@ -58,11 +79,20 @@ class EnvInfo extends AbstractPlugin
 		return $this->env;
 	}
 
+	/**
+	 * 
+	 * @return array
+	 */
 	public function getSearchKeys()
 	{
 		return $this->searchKeys;
 	}
 
+	/**
+	 * 
+	 * @param array $searchKeys
+	 * @return EnvInfo
+	 */
 	public function setSearchKeys(array $searchKeys)
 	{
 		$this->searchKeys = $searchKeys;

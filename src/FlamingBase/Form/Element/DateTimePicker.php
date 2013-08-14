@@ -62,5 +62,4 @@ class DateTimePicker extends ZendDateTime
 			'validators' => $this->getValidators(),
 		);
 	}
-
 }

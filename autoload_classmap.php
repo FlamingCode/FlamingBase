@@ -16,6 +16,8 @@ return array(
     'FlamingBase\Stdlib\Hydrator\Strategy\DoctrineObject'   => __DIR__ . '/src/FlamingBase/Stdlib/Hydrator/Strategy/DoctrineObject.php',
     'FlamingBase\Stdlib\StringTool'                         => __DIR__ . '/src/FlamingBase/Stdlib/StringTool.php',
     'FlamingBase\Stdlib\ImageTool'                          => __DIR__ . '/src/FlamingBase/Stdlib/ImageTool.php',
+    'FlamingBase\Entity\Exception\ExceptionInterface'       => __DIR__ . '/src/FlamingBase/Entity/Exception/ExceptionInterface.php',
+    'FlamingBase\Entity\Exception\UnknownPropertyException' => __DIR__ . '/src/FlamingBase/Entity/Exception/UnknownPropertyException.php',
     'FlamingBase\Entity\AbstractEntity'                     => __DIR__ . '/src/FlamingBase/Entity/AbstractEntity.php',
     'FlamingBase\Module'                                    => __DIR__ . '/Module.php',
     'FlamingBaseTest\Entity\ConcreteEntity'                 => __DIR__ . '/test/FlamingBaseTest/Entity/ConcreteEntity.php',

@@ -23,14 +23,31 @@ use Zend\Mvc\Controller\Plugin\AbstractPlugin;
  */
 class Emailer extends AbstractPlugin
 {
+	/**
+	 *
+	 * @var string
+	 */
 	protected $defaultFrom;
 
+	/**
+	 * 
+	 * @param string $defaultFrom
+	 */
 	public function __construct($defaultFrom = null)
 	{
 		if ($defaultFrom)
 			$this->setDefaultFrom($defaultFrom);
 	}
 
+	/**
+	 * 
+	 * @param string $to
+	 * @param string $subject
+	 * @param string $body
+	 * @param string|null $from
+	 * @param array $additionalHeaders
+	 * @return bool
+	 */
 	public function sendMail($to, $subject, $body, $from = null, array $additionalHeaders = array())
 	{
 		if (!$from)
@@ -40,7 +57,7 @@ class Emailer extends AbstractPlugin
 
 		$headerStr = implode("\r\n", array_map(function($val, $key) { return $key . ': ' . $val; } , $headers, array_keys($headers)));
 
-		mail($to, $subject, $body, $headerStr);
+		return mail($to, $subject, $body, $headerStr);
 
 		// For some reason Zend\Mail\Transport\SendMail doesn't work...
 //		$mail = new Message;
@@ -63,11 +80,20 @@ class Emailer extends AbstractPlugin
 //		$transport->send($mail);
 	}
 
+	/**
+	 * 
+	 * @return string
+	 */
 	public function getDefaultFrom()
 	{
 		return $this->defaultFrom;
 	}
 
+	/**
+	 * 
+	 * @param string $from
+	 * @return Emailer
+	 */
 	public function setDefaultFrom($from)
 	{
 		$this->defaultFrom = (string) $from;

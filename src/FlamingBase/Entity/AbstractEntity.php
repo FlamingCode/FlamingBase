@@ -7,8 +7,6 @@
 
 namespace FlamingBase\Entity;
 
-use Exception;
-
 /**
  * AbstractEntity
  *
@@ -19,6 +17,9 @@ use Exception;
  */
 abstract class AbstractEntity
 {
+	const GET_METHOD_PREFIX = 'get';
+	const SET_METHOD_PREFIX = 'set';
+	
 	/**
 	 * Constructor
 	 *
@@ -34,13 +35,13 @@ abstract class AbstractEntity
 	 *
 	 * @param string $name
 	 * @param mixed $value
-	 * @throws Exception
+	 * @throws Exception\UnknownPropertyException
 	 */
 	public function __set($name, $value)
 	{
-		$method = 'set' . $name;
+		$method = self::SET_METHOD_PREFIX . $name;
 		if (!method_exists($this, $method))
-			throw new Exception('Invalid property: ' . $name);
+			throw new Exception\UnknownPropertyException('Trying to set unknown property: ' . $name);
 		$this->$method($value);
 	}
 
@@ -48,13 +49,13 @@ abstract class AbstractEntity
 	 *
 	 * @param string $name
 	 * @return mixed
-	 * @throws Exception
+	 * @throws Exception\UnknownPropertyException
 	 */
 	public function __get($name)
 	{
-		$method = 'get' . $name;
+		$method = self::GET_METHOD_PREFIX . $name;
 		if (!method_exists($this, $method))
-			throw new Exception('Invalid property: ' . $name);
+			throw new Exception\UnknownPropertyException('Trying to get unknown property: ' . $name);
 		return $this->$method();
 	}
 
@@ -67,7 +68,7 @@ abstract class AbstractEntity
 	{
 		$methods = get_class_methods($this);
 		foreach ($options as $key => $value) {
-			$method = 'set' . ucfirst($key);
+			$method = self::SET_METHOD_PREFIX . ucfirst($key);
 			if (in_array($method, $methods))
 				$this->$method($value);
 		}

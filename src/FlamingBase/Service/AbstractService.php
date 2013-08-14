@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManager;
 
 use ArrayObject;
 use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 /**
  * AbstractService
@@ -74,6 +75,8 @@ abstract class AbstractService
 	 */
 	public function getHydrator()
 	{
+		if (!$this->hydrator)
+			$this->hydrator = new ClassMethods(false);
 		return $this->hydrator;
 	}
 
@@ -99,6 +102,11 @@ abstract class AbstractService
 		return $this->options;
 	}
 
+	/**
+	 * 
+	 * @param mixed $option
+	 * @return mixed
+	 */
 	public function getOption($option)
 	{
 		if ($this->options->offsetExists($option))

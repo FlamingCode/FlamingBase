@@ -21,6 +21,11 @@ use Zend\View\Helper\AbstractHelper;
  */
 class BootstrapifyMenu extends AbstractHelper
 {
+	/**
+	 * 
+	 * @param string|null $html
+	 * @return BootstrapifyMenu|string
+	 */
 	public function __invoke($html = null)
 	{
 		if (null === $html)
@@ -56,19 +61,17 @@ class BootstrapifyMenu extends AbstractHelper
 				$li = $item->parentNode;
 				$li->setAttribute('id', substr($item->getAttribute('href'), 1));
 
-				if (($existingClass = $li->getAttribute('class')) !== '') {
+				if (($existingClass = $li->getAttribute('class')) !== '')
 					$li->setAttribute('class', $existingClass . ' dropdown');
-				} else {
+				else
 					$li->setAttribute('class', 'dropdown');
-				}
 
 				$item->setAttribute('data-toggle', 'dropdown');
 
-				if (($existingClass = $item->getAttribute('class')) !== '') {
+				if (($existingClass = $item->getAttribute('class')) !== '')
 					$item->setAttribute('class', $item->getAttribute('class') . ' dropdown-toggle');
-				} else {
+				else
 					$item->setAttribute('class', 'dropdown-toggle');
-				}
 
 				$space = $domDoc->createTextNode(' ');
 

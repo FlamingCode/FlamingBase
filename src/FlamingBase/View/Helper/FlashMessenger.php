@@ -20,14 +20,27 @@ use Zend\Mvc\Controller\Plugin\FlashMessenger as FlashMessengerPlugin;
  */
 class FlashMessenger extends AbstractHelper
 {
+	/**
+	 *
+	 * @var FlashMessengerPlugin
+	 */
 	protected $plugin;
 
+	/**
+	 * 
+	 * @param FlashMessengerPlugin $plugin
+	 */
 	public function __construct(FlashMessengerPlugin $plugin = null)
 	{
 		if ($plugin)
 			$this->setPlugin($plugin);
 	}
 
+	/**
+	 * 
+	 * @param sting|null $namespace
+	 * @return FlashMessengerPlugin
+	 */
 	public function __invoke($namespace = null)
 	{
 		if (null !== $namespace) {
@@ -38,6 +51,10 @@ class FlashMessenger extends AbstractHelper
 		return $this->getPlugin();
 	}
 
+	/**
+	 * 
+	 * @return FlashMessengerPlugin
+	 */
 	public function getPlugin()
 	{
 		if (!$this->plugin)
@@ -45,6 +62,11 @@ class FlashMessenger extends AbstractHelper
 		return $this->plugin;
 	}
 
+	/**
+	 * 
+	 * @param FlashMessengerPlugin $plugin
+	 * @return FlashMessenger
+	 */
 	public function setPlugin(FlashMessengerPlugin $plugin)
 	{
 		$this->plugin = $plugin;

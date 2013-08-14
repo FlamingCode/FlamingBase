@@ -21,12 +21,22 @@ abstract class AbstractCliController extends AbstractActionController
 {
 	const FILE_SUFFIX = '.lock';
 
+	/**
+	 *
+	 * @var int
+	 */
 	protected $pid;
 
+	/**
+	 *
+	 * @var string
+	 */
 	protected $lockdir = 'data/tmp';
 
 	/**
 	 * Check to see if a cronjob is already running
+	 * 
+	 * @return bool
 	 */
 	private function isrunning()
 	{
@@ -39,6 +49,7 @@ abstract class AbstractCliController extends AbstractActionController
 
 	/**
 	 * Create a lock for this process
+	 * 
 	 * @return int
 	 */
 	public function lock()
@@ -61,6 +72,10 @@ abstract class AbstractCliController extends AbstractActionController
 		return $this->pid;
 	}
 
+	/**
+	 * 
+	 * @return bool
+	 */
 	public function unlock()
 	{
 		$lock_file = $this->getLockFile();
@@ -72,6 +87,11 @@ abstract class AbstractCliController extends AbstractActionController
 		return true;
 	}
 
+	/**
+	 * Gets the Path to the lock file
+	 * 
+	 * @return string
+	 */
 	protected function getLockFile()
 	{
 		$request = $this->getRequest();
