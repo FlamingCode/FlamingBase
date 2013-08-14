@@ -37,9 +37,9 @@
 		"psr-0": {
 			"FlamingBase\\": "src/",
 			"FlamingBaseTest\\": "tests/"
-		}
-	},
-	"classmap": [
-		"./"
-	]
+		},
+		"classmap": [
+                	"./"
+        	]
+	}
 }
