@@ -16,7 +16,7 @@ use Zend\Mvc\MvcEvent;
  * @author Flemming Andersen <flemming@flamingcode.com>
  * @copyright (c) 2013, Flaming Code
  * @link https://github.com/FlamingCode/FlamingBase for the canonical source repository
- * @license http://opensource.org/licenses/GPL-2.0 GPLv2
+ * @license http://opensource.org/licenses/GPL-2.0 GPL-2.0
  */
 class Module
 {
@@ -78,9 +78,6 @@ class Module
 	public function getAutoloaderConfig()
 	{
 		return array(
-			'Zend\Loader\ClassMapAutoloader' => array(
-				__DIR__ . '/autoload_classmap.php',
-			),
 			'Zend\Loader\StandardAutoloader' => array(
 				'namespaces' => array(
 					__NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
