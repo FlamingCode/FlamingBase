@@ -1,13 +1,14 @@
 {
 	"name": "flaming-code/flaming-base",
-	"description": "Module that provides common functionality and library code",
+	"description": "Module that provides common functionality and library code for ZF2 applications",
 	"type": "library",
 	"license": "GPL-2.0",
 	"homepage": "https://github.com/FlamingCode/FlamingBase",
 	"keywords": [
 		"flamingbase",
 		"module",
-		"zf2"
+		"zf2",
+		"zend"
 	],
 	"authors": [
 		{
