@@ -20,15 +20,11 @@ class Password implements StrategyInterface
 {
 	public function extract($value)
 	{
-		echo "extract\n";
-		var_dump($value);
 		return $value;
 	}
 	
 	public function hydrate($value)
 	{
-		echo "hydrate\n";
-		var_dump($value);
 		if (empty($value))
 			return null;
 		return $value;
