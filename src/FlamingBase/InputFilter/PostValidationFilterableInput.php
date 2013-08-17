@@ -54,8 +54,8 @@ class PostValidationFilterableInput extends Input
 	public function isValid($context = null)
 	{
 		$result = parent::isValid($context);
-		if ($result) {
-			$value = $this->getValue();
+		$value = $this->getValue();
+		if ($result && !empty($value)) {
 			$filterChain = $this->getPostValidationFilterChain();
 			$value = $filterChain->filter($value);
 			$this->setValue($value);
