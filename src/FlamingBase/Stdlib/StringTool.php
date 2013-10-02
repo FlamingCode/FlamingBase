@@ -7,6 +7,8 @@
 
 namespace FlamingBase\Stdlib;
 
+use Zend\Math\Rand;
+
 /**
  * StringTool
  *
@@ -17,30 +19,21 @@ namespace FlamingBase\Stdlib;
  */
 class StringTool
 {
-	public static function randStr($length = 64, $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890')
+	const ALL_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
+	const ALL_UPPER_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+	
+	public static function randStr($length = 64, $chars = self::ALL_CHARS)
 	{
-		// Length of the character list
-		$chars_length = (strlen($chars) - 1);
-
-		// Let us start our string
-		$string = $chars{mt_rand(0, $chars_length)};
-
-		// Generate the random string
-		for ($i = 1; $i < $length; $i = strlen($string)) {
-			// Select a random character from our list
-			$r = $chars{mt_rand(0, $chars_length)};
-
-			// We do not want the same two chars next to eachother
-			if ($r != $string{$i - 1})
-				$string .=  $r;
-		}
-
-		// Return the string
-		return $string;
+		return Rand::getString($length, $chars, true);
 	}
 
-	public static function randUpperStr($length = 64, $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')
+	public static function randUpperStr($length = 64, $chars = self::ALL_UPPER_CHARS)
 	{
 		return self::randStr($length, $chars);
+	}
+	
+	public static function randLowerStr($length = 64, $chars = self::ALL_UPPER_CHARS)
+	{
+		return strtolower(self::randUpperStr($length, $chars));
 	}
 }
