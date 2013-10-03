@@ -21,6 +21,7 @@ class StringTool
 {
 	const ALL_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
 	const ALL_UPPER_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+	const ALL_LOWER_CHARS = 'abcdefghijklmnopqrstuvwxyz1234567890';
 	
 	public static function randStr($length = 64, $chars = self::ALL_CHARS)
 	{
@@ -32,8 +33,8 @@ class StringTool
 		return self::randStr($length, $chars);
 	}
 	
-	public static function randLowerStr($length = 64, $chars = self::ALL_UPPER_CHARS)
+	public static function randLowerStr($length = 64, $chars = self::ALL_LOWER_CHARS)
 	{
-		return strtolower(self::randUpperStr($length, $chars));
+		return self::randStr($length, $chars);
 	}
 }
