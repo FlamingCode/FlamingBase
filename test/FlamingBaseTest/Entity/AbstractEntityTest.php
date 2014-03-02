@@ -80,4 +80,16 @@ class AbstractEntityTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($data['skills'], $instance->skills);
 		$this->assertSame($data['timestamp'], $instance->timestamp);
 	}
+	
+	public function testThrowsExceptionFromUnknownProperty()
+	{
+		$instance = new ConcreteEntity;
+		
+		$this->setExpectedException(
+			'FlamingBase\Entity\Exception\UnknownPropertyException',
+			'Trying to set unknown property: someUnknownProperty'
+		);
+		
+		$instance->someUnknownProperty = 'Test';
+	}
 }
