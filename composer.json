@@ -2,7 +2,7 @@
 	"name": "flaming-code/flaming-base",
 	"description": "Module that provides common functionality and library code for ZF2 applications",
 	"type": "library",
-	"license": "GPL-2.0",
+	"license": "MIT",
 	"homepage": "https://github.com/FlamingCode/FlamingBase",
 	"keywords": [
 		"flamingbase",
@@ -17,7 +17,6 @@
 			"homepage": "http://flamingcode.com/"
 		}
 	],
-	"minimum-stability": "dev",
 	"require": {
 		"php": ">=5.3.3",
 		"zendframework/zend-loader": "2.*",
