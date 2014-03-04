@@ -17,6 +17,7 @@
 			"homepage": "http://flamingcode.com/"
 		}
 	],
+	"minimum-stability": "dev",
 	"require": {
 		"php": ">=5.3.3",
 		"zendframework/zend-loader": "2.*",
